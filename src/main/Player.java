@@ -1,13 +1,17 @@
 package main;
 
 public class Player {
-	private int x;
-	private int y;
-	private int acel;
+	private float px = 50,py = 400;
+	private float vx = 25, vy = -100;
+	private float gravity = 0.5f;
 	private int lifes = 3;
 	
+	public void walk() {
+		this.setPx(px+vx);
+	}
+	
 	public void jump() {
-		
+		this.setPy(py+vy);
 	}
 	
 	public void portalBlue() {
@@ -22,27 +26,41 @@ public class Player {
 		
 	}
 
-	
 ////////////GETS E SETS////////////
-	public int getX() {
-		return x;
+	
+	public float getPx() {
+		return px;
 	}
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	public int getY() {
-		return y;
-	}
-	public void setY(int y) {
-		this.y = y;
+	public void setPx(float px) {
+		this.px = px;
 	}
 
-	public int getAcel() {
-		return acel;
+	public float getPy() {
+		return py;
 	}
-	public void setAcel(int acel) {
-		this.acel = acel;
+	public void setPy(float py) {
+		this.py = py;
+	}
+
+	public float getVx() {
+		return vx;
+	}
+	public void setVx(float vx) {
+		this.vx = vx;
+	}
+
+	public float getVy() {
+		return vy;
+	}
+	public void setVy(float vy) {
+		this.vy = vy;
+	}
+
+	public float getGravity() {
+		return gravity;
+	}
+	public void setGravity(float gravity) {
+		this.gravity = gravity;
 	}
 
 	public int getLifes() {
@@ -51,4 +69,5 @@ public class Player {
 	public void setLifes(int lifes) {
 		this.lifes = lifes;
 	}
+	
 }
