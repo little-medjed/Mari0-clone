@@ -1,17 +1,30 @@
 package main;
 
+
 public class Player {
-	private float px = 50,py = 400;
-	private float vx = 25, vy = -100;
-	private float gravity = 0.5f;
+	private float px = 50,py = 450;
+	private float vx = 15, vy = -15.0f;
+	private float gravity = -0.5f;
 	private int lifes = 3;
 	
-	public void walk() {
-		this.setPx(px+vx);
+	
+	public void walkRight() {
+		if(px <= 800) {
+			this.setPx(px+vx);
+		}
+		
+	}
+	public void walkLeft() {
+		if(px >= 50) {
+			this.setPx(px-vx);
+		}
 	}
 	
-	public void jump() {
-		this.setPy(py+vy);
+	public void jump() {	
+		if(py >= 350) {
+			py += vy; 
+		}	
+		
 	}
 	
 	public void portalBlue() {
