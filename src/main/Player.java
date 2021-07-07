@@ -2,8 +2,8 @@ package main;
 
 
 public class Player {
-	private float px = 50,py = 450;
-	private float vx = 15, vy = -15.0f;
+	private int px = 50,py = 300;
+	private int vx = 15, vy = -15;
 	private float gravity = -0.5f;
 	private int lifes = 3;
 	
@@ -41,31 +41,31 @@ public class Player {
 
 ////////////GETS E SETS////////////
 	
-	public float getPx() {
+	public int getPx() {
 		return px;
 	}
-	public void setPx(float px) {
+	public void setPx(int px) {
 		this.px = px;
 	}
 
-	public float getPy() {
+	public int getPy() {
 		return py;
 	}
-	public void setPy(float py) {
+	public void setPy(int py) {
 		this.py = py;
 	}
 
-	public float getVx() {
+	public int getVx() {
 		return vx;
 	}
-	public void setVx(float vx) {
+	public void setVx(int vx) {
 		this.vx = vx;
 	}
 
-	public float getVy() {
+	public int getVy() {
 		return vy;
 	}
-	public void setVy(float vy) {
+	public void setVy(int vy) {
 		this.vy = vy;
 	}
 
