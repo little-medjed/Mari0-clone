@@ -11,28 +11,29 @@ public class Display {
 	private Canvas canvas;
 	
 	private String title;
-	private int width,heigth;
+	private int width,height;
 	
-	public Display(String title, int width, int heigth) {
+	public Display(String title, int width, int height) {
 		this.title = title;
 		this.width = width;
-		this.heigth = heigth;
+		this.height = height;
 		
 		createDisplay();
 	}
 	
 	private void createDisplay() {
 		frame = new JFrame(title);
-		frame.setSize(width,heigth);
+		frame.setSize(width,height);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		
 		canvas = new Canvas();
-		canvas.setPreferredSize(new Dimension(width,heigth));
-		canvas.setMaximumSize(new Dimension(width,heigth));
-		canvas.setMinimumSize(new Dimension(width,heigth));
+		canvas.setPreferredSize(new Dimension(width,height));
+		canvas.setMaximumSize(new Dimension(width,height));
+		canvas.setMinimumSize(new Dimension(width,height));
+		canvas.setFocusable(false);
 		
 		frame.add(canvas);
 		frame.pack();
@@ -42,9 +43,8 @@ public class Display {
 		return canvas;
 	}
 
-	public void setCanvas(Canvas canvas) {
-		this.canvas = canvas;
+	public JFrame getFrame() {
+		return frame;
 	}
-	
-	
+
 }

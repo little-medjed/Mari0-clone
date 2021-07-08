@@ -1,43 +1,63 @@
 package main;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
+
 import display.Display;
 import graphics.Assets;
+import input.KeyManager;
+import states.GameState;
+import states.MenuState;
+import states.State;
 
 
+@SuppressWarnings("unused")
 public class Game implements Runnable {
 
 	//Display
 	private Display display;
 	private int width,heigth;
 	public String title;
+	
 	//Thread
 	private boolean running = false;
 	private Thread thread;
+	
 	//Graphics
 	private BufferStrategy bs;
 	private Graphics g;
-	//Player
-	Player p1 = new Player();
-
 	
+	//States
+	private State gameState;
+	private State menuState;	
+	
+	//Input
+	private KeyManager keyManager;
+
+
 	public Game(String title, int width, int heigth) {
 		this.width = width;
 		this.heigth = heigth;
 		this.title = title;
+		keyManager = new KeyManager();
 	}
-
-//-------------------------------THREAD-------------------------------	
+	
 	private void init() {
 		display = new Display(title, width, heigth);
+		display.getFrame().addKeyListener(keyManager);
 		Assets.init();
+		
+		gameState = new GameState(this);
+		menuState = new MenuState(this);
+		State.setState(gameState);
 	}
 	
 	private void update() {
-
+		keyManager.update();
+		
+		if(State.getState() != null) {
+			State.getState().update();
+		}
 	}
 	
 	private void render() {
@@ -47,13 +67,17 @@ public class Game implements Runnable {
 			return;
 		}
 		g = bs.getDrawGraphics();
-		
 		//Limpa a tela
 		g.clearRect(0, 0, width, heigth);
+		
 		//BACKGROUND
-		g.fillRect(0, 0, width, heigth);
-		//Player
-		g.drawImage(Assets.player, p1.getPx(),p1.getPy(),null);
+		g.drawImage(Assets.background, 0,0,null);
+		
+		 
+		
+		if(State.getState() != null) {
+			State.getState().render(g);
+		}
 		
 		//Inicia os graficos
 		bs.show();
@@ -91,6 +115,10 @@ public class Game implements Runnable {
 		}
 		
 		stop();
+	}
+	
+	public KeyManager getKeyManager() {
+		return keyManager;
 	}
 	
 	public synchronized void start() {
