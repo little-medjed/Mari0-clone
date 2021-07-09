@@ -25,10 +25,15 @@ public class Player extends Entity {
 	
 	private void getInput() {
 		if(game.getKeyManager().right) {
-			posX += speed;
+			if(posX < 850) {
+				posX += speed;
+			}
 		}
 		if(game.getKeyManager().left) {
-			posX -= speed;
+			if(posX > 60) {
+				posX -= speed;
+			}
+			
 		}
 		if(game.getKeyManager().jump) {
 			if(posY > 325) {

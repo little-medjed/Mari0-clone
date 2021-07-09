@@ -13,7 +13,7 @@ public class GameState extends State {
 	
 	public GameState(Game game) {
 		super(game);
-		p1 = new Player(game, 50, 445);
+		p1 = new Player(game, 70, 445);
 		test = new Level("assets/levels/test_level.txt");
 	}
 	
