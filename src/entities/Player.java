@@ -10,7 +10,7 @@ public class Player extends Entity {
 	private Game game;
 	private float speed = 3.0f;
 	private static final int PLAYER_WIDTH = 40, PLAYER_HEIGHT = 70;
-	private static final float DEFALT_POSY = 450;
+	private static final float DEFALT_POSY = 445;
 	
 
 	public Player(Game game, float posX, float posY) {
@@ -31,7 +31,9 @@ public class Player extends Entity {
 			posX -= speed;
 		}
 		if(game.getKeyManager().jump) {
-			posY -= speed;
+			if(posY > 325) {
+				posY -= speed;
+			}
 		}
 		else {
 			if(posY < DEFALT_POSY)

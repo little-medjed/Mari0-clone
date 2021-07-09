@@ -7,14 +7,16 @@ public class Tile {
 	
 	//Static
 	public static Tile[] tiles = new Tile[256];
-	public static Tile floor= new FloorTile(0);
-	public static Tile plateUp = new PlateUpTile(1);
-	public static Tile plateDown = new PlateDownTile(2);
+	public static Tile empty = new EmptyTile(0);
+	public static Tile floor= new FloorTile(1);
+	public static Tile plateUp = new PlateUpTile(2);
+	public static Tile plateDown = new PlateDownTile(3);
+	
 	
 	//Class
 	protected BufferedImage texture;
 	protected final int ID;
-	private static final int TILE_WIDTH = 32,TILE_HEIGTH = 32;
+	public static final int TILE_WIDTH = 32,TILE_HEIGHT = 32;
 	
 	public Tile(BufferedImage texture, int ID) {
 		this.texture = texture;
@@ -28,7 +30,7 @@ public class Tile {
 	}
 	
 	public void render(Graphics g, int x, int y) {
-		g.drawImage(texture, x, y, TILE_WIDTH, TILE_HEIGTH, null);
+		g.drawImage(texture, x, y, TILE_WIDTH, TILE_HEIGHT, null);
 	}
 	
 	public boolean isSolid() {

@@ -3,27 +3,30 @@ package states;
 import java.awt.Graphics;
 
 import entities.Player;
+import levels.Level;
 import main.Game;
-import tile.Tile;
 
 public class GameState extends State {
 
 	private Player p1;
+	private Level test;
 	
 	public GameState(Game game) {
 		super(game);
-		p1 = new Player(game, 50, 450);
+		p1 = new Player(game, 50, 445);
+		test = new Level("assets/levels/test_level.txt");
 	}
 	
 	@Override
 	public void update() {
+		test.update();
 		p1.update();
 	}
 
 	@Override
 	public void render(Graphics g) {
+		test.render(g);
 		p1.render(g);
-		Tile.tiles[0].render(g, 0,520);
 	}
 	
 }
