@@ -14,7 +14,7 @@ public class Player extends Entity {
 	
 
 	public Player(Game game, float posX, float posY) {
-		super(posX, posY, PLAYER_WIDTH, PLAYER_HEIGHT);
+		super(posX, posY, PLAYER_WIDTH, PLAYER_HEIGHT,3);
 		this.game = game;
 	}
 

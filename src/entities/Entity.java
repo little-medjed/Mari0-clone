@@ -6,12 +6,14 @@ public abstract class Entity {
 	
 	protected float posX, posY;
 	protected int width, heigth;
+	protected int life;
 	
-	public Entity(float posX, float posY, int width, int heigth) {
+	public Entity(float posX, float posY, int width, int heigth, int life) {
 		this.posX = posX;
 		this.posY = posY;
 		this.width = width;
 		this.heigth = heigth;
+		this.life = life;
 	}
 	
 	public abstract void update();
